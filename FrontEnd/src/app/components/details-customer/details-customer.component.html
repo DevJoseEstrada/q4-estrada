@@ -1,0 +1,23 @@
+<body>
+  <div class="container">
+    <h2>Details customer</h2>
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input type="text" id="id" [(ngModel)]="customer.id" name="id" readonly>
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="customer.name" name="name" #name="ngModel" readonly>
+    </div>
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input type="text" id="contact" [(ngModel)]="customer.contact" name="contact" #contact="ngModel" readonly>
+    </div>
+    <div class="form-group">
+      <label for="creationDate">Creation Date</label>
+      <input type="date" id="creationDate" [(ngModel)]="customer.creationDate" name="creationDate"
+        #creationDate="ngModel" readonly>
+    </div>
+    <button (click)="returnToCustomer()" class="btn btn-info">Return</button>
+  </div>
+</body>

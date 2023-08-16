@@ -1,0 +1,47 @@
+<section class="form">
+  <h2 class="title">New Project</h2>
+  <form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" required maxlength="250" [(ngModel)]="project.name" name="name" #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+        <div *ngIf="name.errors?.['required']">
+          Name is required.
+        </div>
+        <div *ngIf="name.errors?.['maxlength']">
+          Name can not be more than 250 characters long.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="descriptoin">Description</label>
+      <input type="text" id="descriptoin" required [(ngModel)]="project.descriptoin" name="descriptoin"
+        #descriptoin="ngModel">
+      <div *ngIf="descriptoin.invalid && (descriptoin.dirty || descriptoin.touched)" class="error">
+        Description is required
+      </div>
+    </div>
+    <div>
+      <label for="creationDate">Creation Date</label>
+      <input type="date" id="creationDate" [(ngModel)]="project.creationDate" name="creationDate">
+    </div>
+    <div>
+      <label for="customerId">Customer</label>
+      <select id="customerId" required [(ngModel)]="project.customer.id" name="customerId" #customerId="ngModel">
+        <option value="" disabled>Select a customer</option>
+        <option *ngFor="let customer of customers$ | async" [value]="customer.id">{{ customer.name }}</option>
+      </select>
+      <div *ngIf="customerId.invalid && (customerId.dirty || customerId.touched)" class="error">
+        Please select a customer
+      </div>
+    </div>
+    <section id="btns">
+      <button id="btnSave" class="btn" color="accent" aria-label="Btn save" type="submit"
+        [disabled]="f.invalid || project.customer.id === -1">
+        save
+      </button>
+      <button type="button" id="btnCancel" class="btn" mat-fab color="accent" aria-label="Btn cancel"
+        (click)="cancel()">Cancel</button>
+    </section>
+  </form>
+</section>

@@ -1,0 +1,35 @@
+<section class="form">
+  <h2 class="title">New Customer</h2>
+  <form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" required maxlength="250" [(ngModel)]="customer.name" name="name" #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+        <div *ngIf="name.errors?.['required']">
+          Name is required.
+        </div>
+        <div *ngIf="name.errors?.['maxlength']">
+          Name can not be more than 250 characters long.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="contact">Contact</label>
+      <input type="text" id="contact" required [(ngModel)]="customer.contact" name="contact" #contact="ngModel">
+      <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="error">
+        Contact is required
+      </div>
+    </div>
+    <div>
+      <label for="creationDate">Creation Date</label>
+      <input type="date" id="creationDate" [(ngModel)]="customer.creationDate" name="creationDate">
+    </div>
+    <section id="btns">
+      <button id="btnSave" class="btn" color="accent" aria-label="Btn save" type="submit" [disabled]="f.invalid">
+        save
+      </button>
+      <button type="button" id="btnCancel" class="btn" mat-fab color="accent" aria-label="Btn cancel"
+        (click)="cancel()">Cancel</button>
+    </section>
+  </form>
+</section>

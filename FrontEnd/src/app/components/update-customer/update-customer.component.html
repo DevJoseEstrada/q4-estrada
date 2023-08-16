@@ -1,0 +1,34 @@
+<body>
+  <div class="container">
+    <h2>Update customer</h2>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" id="id" [(ngModel)]="customer.id" name="id" readonly>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required [(ngModel)]="customer.name" name="name" #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+          Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="text" id="contact" required [(ngModel)]="customer.contact" name="contact" #contact="ngModel">
+        <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="error">
+          Contact is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="creationDate">Creation Date</label>
+        <input type="date" id="creationDate" required [(ngModel)]="customer.creationDate" name="creationDate"
+          #creationDate="ngModel">
+        <div *ngIf="creationDate.invalid && (creationDate.dirty || creationDate.touched)" class="error">
+          Creation Date is required
+        </div>
+      </div>
+      <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+  </div>
+</body>

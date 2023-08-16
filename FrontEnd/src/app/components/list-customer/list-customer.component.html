@@ -1,0 +1,42 @@
+<section>
+  <div *ngIf="customers$ | async; else showEmptyState" class="container">
+    <div class="title-container">
+      <h2>Customers List</h2>
+      <button class="btn-add" (click)="onOpenCloseAddSquare($event)"> <img
+          src="https://www.htmlcssbuttongenerator.com/iconExample-plus-square-multiple-lined.svg" width="25"></button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Creation Date</th>
+          <th>Buttons</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers$ | async">
+          <td>{{customer.id}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.contact}}</td>
+          <td>{{customer.creationDate}}</td>
+          <td>
+            <button class="btn" (click)="deleteCustomer(customer.id)" class="btn btn-danger">Delete</button>
+            <button class="btn" (click)="goUpdateCustomers(customer.id)" class="btn btn-info">Update</button>
+            <button class="btn" (click)="goDetailsCustomers(customer.id)" class="btn btn-info">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <section id="square" #square (mousedown)="onOpenCloseAddSquare($event)">
+    <app-add-customer class="section-create" (mousedown)="onAvoidCloseSquareAdd()"
+      (outputSectionAdd)="onOpenCloseAddSquare($event)" (itemAdded)="loadCustomers()"></app-add-customer>
+  </section>
+  <ng-template #showEmptyState>
+    <div class="loading-container">
+      <div class="spinner"></div>
+    </div>
+  </ng-template>
+</section>

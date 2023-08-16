@@ -1,0 +1,28 @@
+<body>
+  <div class="container">
+    <h2>Details project</h2>
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input type="text" id="id" [(ngModel)]="project.id" name="id" readonly>
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="project.name" name="name" #name="ngModel" readonly>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" id="description" [(ngModel)]="project.descriptoin" name="description" #description="ngModel"
+        readonly>
+    </div>
+    <div class="form-group">
+      <label for="creationDate">Creation Date</label>
+      <input type="date" id="creationDate" [(ngModel)]="project.creationDate" name="creationDate"
+        #creationDate="ngModel" readonly>
+    </div>
+    <div class="form-group">
+      <label for="customer">Customer:</label>
+      <input type="text" id="customer" [(ngModel)]="project.customer.name" name="customer" #customer="ngModel" readonly>
+    </div>
+    <button (click)="returnToProject()" class="btn btn-info">Return</button>
+  </div>
+</body>
