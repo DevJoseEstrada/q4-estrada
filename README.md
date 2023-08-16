@@ -1,6 +1,6 @@
 # GitHub Repository README
 
-This repository contains the source code for a web application developed with Angular for the front-end and Spring Boot for the back-end. The application is deployed using AWS Elastic Beanstalk, utilizing services like RDS for the database and S3 for storage. The project includes instructions for offline database setup using the provided DDL script and some Unit test.
+This repository contains the source code for a web application developed with Angular for the front-end and Spring Boot for the back-end. The application is deployed using AWS Elastic Beanstalk, utilizing services like RDS for the database and S3 for storage. The project includes some Unit test and instructions for offline setup.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -8,6 +8,7 @@ This repository contains the source code for a web application developed with An
 - [Database Setup](#database-setup)
 - [Backend Configuration](#backend-configuration)
 - [Frontend Configuration](#frontend-configuration)
+- [Additional Notes](#additional-notes)
 - [Links](#links)
 
 ## Introduction
@@ -36,6 +37,11 @@ spring.datasource.password=passDB
 In the front-end project, modify the environment configuration to point to your local API:
 1. Open `FrontEnd/src/environments/environment.ts`.
 2. Set the `apiUrl` property to the URL of your local API.
+
+
+## Additional Notes
+- The Angular application's UI is implemented using pure HTML, without utilizing frameworks such as Angular Material, PrimeNG, Tailwind CSS, or Bootstrap.
+- Given more time and resources, improvements would include a polished and responsive user interface, enhanced error handling, and security implementations like JWT.
 
 
 ## Links
